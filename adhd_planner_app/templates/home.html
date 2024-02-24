@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        h1 {
+            padding-top: 20px;
+        }
+        .must {
+            color: #800080; /* Fioletowy jasny */
+        }
+        .shud {
+            color: #008080; /* Błękitny */
+        }
+        .nice {
+            color: #FF69B4; /* Różowy */
+        }
+    </style>
+</head>
+<body>
+    <h1 class="shud">Should</h1>
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Start Date</th>
+            <th>Deadline</th>
+        </tr>
+        {% for thing in should_things %}
+        <tr>
+            <td>{{ thing.title }}</td>
+            <td>{{ thing.start_date }}</td>
+            <td>{{ thing.deadline }}</td>
+        </tr>
+        {% if thing.category == 'SHD' and thing.start_date|date:'Y-m-d' <= today %}
+        {% endif %}
+        {% endfor %}
+    </table>
+
+    <h1 class="must">Must</h1>
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Start Date</th>
+            <th>Deadline</th>
+        </tr>
+        {% for thing in must_things %}
+        <tr>
+            <td>{{ thing.title }}</td>
+            <td>{{ thing.start_date }}</td>
+            <td>{{ thing.deadline }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h1 class="nice">It would be nice if</h1>
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Start Date</th>
+            <th>Deadline</th>
+        </tr>
+        {% for thing in nice_things %}
+        <tr>
+            <td>{{ thing.title }}</td>
+            <td>{{ thing.start_date }}</td>
+            <td>{{ thing.deadline }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
